@@ -10,19 +10,20 @@
 <body>
 
   <style>
-    /* Homepage-only tweaks: tighten header, eyebrow highlights, hide all but recent N posts. */
+    /* Homepage-only tweaks: tighten header, marker highlights, hide all but recent N posts. */
     body > header.flex { gap: 0.5rem !important; }
-    .hl-yellow {
+    /* Marker-style highlight: background only, no outline, no padding box */
+    .hl-mark {
       background-color: #fff642;
       color: #000;
-      padding: 3px 6px;
-      display: inline-block;
-      outline: 1px solid black;
-      margin: 0.25rem 0;
+      padding: 0 2px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
     }
     .eyebrow { margin-top: 1rem; margin-bottom: 0.5rem; }
     #post-list li.hidden-on-home { display: none !important; }
-    #random-post-btn { margin-top: 0.5rem; }
+    /* Random button sits with nav buttons, no gap */
+    nav p #random-post-btn { font: inherit; line-height: 1.25; }
   </style>
 
   <header class="flex">
@@ -37,21 +38,20 @@
         <a href="https://lazykoreanpractice.substack.com" target="_blank" rel="noopener">서브스택</a>
         <a href="https://bearblog.dev/discover/" target="_blank" rel="noopener">발견하다</a>
         <a href="micro/index.html">寸話</a>
+        <button id="random-post-btn" class="random-button">랜덤 이야기</button>
       </p>
     </nav>
   </header>
 
   <main>
-    <button id="random-post-btn" class="random-button">랜덤 이야기</button>
-
     <div id="home-text">
       <p>소설을 읽으면서 한국어를 배워요.<br>
       [Learn Korean Through Reading Fiction.]</p>
     </div>
 
-    <p><span id="last-post-elapsed" class="hl-yellow">마지막 스토리 올린 뒤 경과 시간: (—)</span></p>
+    <p><span class="hl-mark">마지막 스토리 올린 뒤 경과 시간:</span> <span id="last-post-elapsed">(—)</span></p>
 
-    <p class="eyebrow"><span class="hl-yellow">(<span id="recent-count">3</span>) 최근 게시물</span></p>
+    <p class="eyebrow">(<span id="recent-count">3</span>) <span class="hl-mark">최근 게시물</span></p>
 
     <ul class="blog-posts" id="post-list">
       <li>
@@ -1178,7 +1178,7 @@
         const d = new Date(firstSpan.textContent);
         if (!isNaN(d)) {
           const el = document.getElementById('last-post-elapsed');
-          if (el) el.textContent = '마지막 스토리 올린 뒤 경과 시간: (' + formatElapsed(d) + ')';
+          if (el) el.textContent = '(' + formatElapsed(d) + ')';
         }
       }
     }
