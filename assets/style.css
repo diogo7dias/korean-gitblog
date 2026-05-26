@@ -195,6 +195,16 @@ h1, h2, h3, h4, h5, h6 { font-weight: 100; }
     text-align: left;
 }
 
+.title h1 a,
+.title h1 a:hover,
+.title h1 a:focus,
+.title h1 a:active {
+    color: inherit !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    outline: none !important;
+}
+
 .title h1:hover {
     font-size: 0.9rem;
     margin-top: 20px;
