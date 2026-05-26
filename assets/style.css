@@ -1,0 +1,636 @@
+@import url("https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css");
+
+/* =========================================================
+   Root variables
+   ========================================================= */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111;
+  --color-primary: #63b1ff;
+  --spacing: 3px;
+  --max-width: 600px;
+  --hero-aspect: 4 / 3;
+}
+
+/* Light scheme preference swap */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #222;
+    --text-color: #fff;
+    --color-primary: wheat;
+  }
+}
+
+/* =========================================================
+   Resets and hardening
+   ========================================================= */
+html, body { width: 100%; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   Base layout and typography
+   ========================================================= */
+body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing);
+  transition: background-color 0.1s ease, color 0.1s ease;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Galmuri14", "Menlo", "Andale Mono", "Consolas", "DejaVu Sans Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+header { gap: 2rem; }
+
+header.flex {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8rem !important;
+}
+
+main { margin: 2rem 0 3rem 0; }
+
+div#tags {
+    font-size: 0.6rem;
+}
+p.tags {
+    font-size: 0.6rem;
+}
+
+/* =========================================================
+   Links, underlines, and hover
+   ========================================================= */
+a {
+  color: currentColor;
+  text-decoration-color: currentColor;
+}
+
+a:hover {
+  color: var(--color-primary);
+  text-decoration-color: var(--color-primary);
+}
+
+/* =========================================================
+   Shared chip style family
+   ========================================================= */
+.chip-button,
+.title a,
+footer .bmc-button,
+.random-button {
+  background-color: #fff642;
+  color: black;
+  text-decoration: none;
+  text-height: 600;
+  padding: 3px 9px;
+  font: inherit;
+  line-height: 1.25;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.1s ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  outline: 1px solid black !important;
+  outline-offset: 0 !important;
+  cursor: pointer;
+  border: none;
+}
+
+.chip-button:hover,
+.title a:hover,
+nav a:hover,
+footer .bmc-button:hover,
+.random-button:hover {
+  background-color: transparent;
+  color: var(--text-color);
+  text-decoration: none;
+  outline: 1px dashed black !important;
+  outline-offset: 0 !important;
+}
+
+/* =========================================================
+   Blog list
+   ========================================================= */
+ul.blog-posts {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+ul.blog-posts li {
+  display: block;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1.1em;
+}
+
+ul.blog-posts li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1.5;
+  color: black;
+  opacity: 1;
+  pointer-events: none;
+  text-decoration: none;
+  font-size: 1rem
+}
+
+ul.blog-posts li:hover::before { opacity: 0; }
+
+ul.blog-posts li a {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  text-decoration: none;
+  padding: 3px 9px;
+  transition: all 0.1s ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  outline: 1px solid black !important;
+  outline-offset: 0 !important;
+}
+
+ul.blog-posts li a:hover {
+  background-color: transparent;
+  color: var(--text-color);
+  text-decoration: none;
+  outline: 1px dashed black !important;
+  outline-offset: 0 !important;
+  font-weight: bold;
+}
+
+ul.blog-posts li span { display: none; }
+
+/* =========================================================
+   Titles
+   ========================================================= */
+h1, h2, h3, h4, h5, h6 { font-weight: 100; }
+
+.title h1 {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-weight: 100;
+    background-color: #000000;
+    color: var(--bg-color);
+    padding: 8px 9px;
+    transition: all 0.1s ease;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    display: -webkit-inline-box;
+    outline: 1px solid black !important;
+    outline-offset: 0px !important;
+    text-align: left;
+}
+
+.title h1:hover {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-weight: 100;
+    background-color: #fff;
+    color: #000;
+    padding: 8px 9px;
+    transition: all 0.1s ease;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    display: -webkit-inline-box;
+    outline: 1px dashed black !important;
+    outline-offset: 0px !important;
+    text-align: left;
+}
+
+main h1 {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    padding: 8px 8px;
+    font-weight: 100;
+    transition: all 0.1s ease;
+    outline: 1px solid black !important;
+    outline-offset: 0px !important;
+}
+
+main h1:hover {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    background-color: #fff;
+    color: #000;
+    display: inline-block;
+    padding: 8px 8px;
+    font-weight: 100;
+    transition: all 0.1s ease;
+    outline: 1px dashed black !important;
+    outline-offset: 0px !important;
+}
+
+/* =========================================================
+   Nav
+   ========================================================= */
+nav p {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+nav a {
+  background: transparent !important;
+  color: #000 !important;
+  outline: 1px solid black !important;
+  outline-offset: 0 !important;
+  text-decoration: none;
+  padding: 3px 9px;
+  font: inherit;
+  line-height: 1.25;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+nav a:hover {
+  color: #000;
+  background: transparent;
+  outline: 1px dashed black !important;
+  outline-offset: 0 !important;
+}
+
+/* =========================================================
+   Meta and misc
+   ========================================================= */
+time { opacity: 0.2; font-weight: bold; font-size: 100%; display: none; }
+
+.tags a, .title, footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.upvote-button { margin-left: -5px; }
+.upvote-count { margin-top: 0 !important; font-size: 16px; }
+.random-button { }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+footer {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+footer .bmc-button {
+  background-color: var(--text-color) !important;
+  color: var(--bg-color) !important;
+  border: 0 !important;
+  padding: 3px 10px !important;
+  display: inline-block;
+  line-height: 1.1;
+  font-weight: 400;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  outline: 1px solid black !important;
+  outline-offset: 0 !important;
+}
+
+footer .bmc-button:hover {
+  background-color: transparent !important;
+  color: var(--text-color) !important;
+  text-decoration: none !important;
+  outline: 1px dashed black !important;
+  outline-offset: 0 !important;
+}
+
+/* =========================================================
+   Content wrapping
+   ========================================================= */
+.content p,
+.content li,
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
+.content a {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.chip-button,
+.title a,
+.random-button,
+nav a {
+  white-space: normal;
+  max-inline-size: 100%;
+}
+
+.content a[href*="://"] {
+  word-break: break-all;
+}
+
+/* =========================================================
+   Float first image, desktop only
+   ========================================================= */
+main, article, .content, .post { display: flow-root; }
+
+@media screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+  main .content img:first-of-type,
+  main article img:first-of-type,
+  article .content img:first-of-type,
+  .post .content img:first-of-type,
+  .post article img:first-of-type,
+  main img:first-of-type,
+  article img:first-of-type {
+    float: left !important;
+    width: 55% !important;
+    max-width: 55% !important;
+    height: auto !important;
+    margin: 0 15px 12px 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: initial !important;
+    shape-outside: margin-box;
+    shape-margin: 8px;
+    outline: 1px solid black !important;
+    outline-offset: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  main img:first-of-type:hover {
+    outline: 1px dashed black !important;
+    outline-offset: 0 !important;
+    filter: saturate(1.05);
+    transition: outline-color .1s ease, filter .1s ease;
+  }
+}
+
+ul.blog-posts img,
+header img,
+nav img,
+footer img {
+  float: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  outline: none !important;
+  shape-outside: none !important;
+}
+
+/* =========================================================
+   Mobile
+   ========================================================= */
+@media screen and (max-width: 1024px) {
+  body {
+    max-width: var(--max-width);
+    margin-inline: auto;
+    padding-inline: 26px;
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+
+  div#home-text {
+    font-size: 0.93rem;
+    font-weight: 100;
+  }
+
+  main, article, .content, .post, .p {
+    font-size: 1rem;
+    line-height: 1.45 !important;
+    font-weight: 100;
+  }
+
+  ul.blog-posts {
+    font-size: 0.8rem !important;
+  }
+
+  .random-button {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+
+  main .content img:first-of-type,
+  main article img:first-of-type,
+  article .content img:first-of-type,
+  .post .content img:first-of-type,
+  .post article img:first-of-type,
+  main img:first-of-type,
+  article img:first-of-type {
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 0 15px 0 !important;
+    shape-outside: none !important;
+    shape-margin: 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: initial !important;
+    outline: 1px solid black !important;
+    outline-offset: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  * {
+    transition: none !important;
+    animation: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  * {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+  }
+
+  .content, .content *,
+  main, main *,
+  article, article *,
+  p, p * {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+  }
+
+  .chip-button,
+  .title a,
+  footer .bmc-button,
+  .random-button {
+    outline: 1px solid black !important;
+    outline-offset: 0 !important;
+    border: none !important;
+  }
+
+  nav a {
+    outline: 1px solid black !important;
+    outline-offset: 0 !important;
+    border: none !important;
+  }
+
+  ul.blog-posts li a {
+    outline: 1px solid black !important;
+    outline-offset: 0 !important;
+    border: none !important;
+  }
+
+  .title h1,
+  main h1 {
+    outline: 1px solid black !important;
+    outline-offset: 0 !important;
+    border: none !important;
+  }
+
+  footer .bmc-button {
+    outline: 1px solid black !important;
+    outline-offset: 0 !important;
+    border: none !important;
+  }
+
+  a:hover, a:focus, a:active,
+  button:hover, button:focus, button:active,
+  .chip-button:hover, .chip-button:focus, .chip-button:active,
+  .title a:hover, .title a:focus, .title a:active,
+  .random-button:hover, .random-button:focus, .random-button:active,
+  nav a:hover, nav a:focus, nav a:active,
+  footer .bmc-button:hover, footer .bmc-button:focus, footer .bmc-button:active,
+  ul.blog-posts li a:hover, ul.blog-posts li a:focus, ul.blog-posts li a:active,
+  .title h1:hover, .title h1:focus, .title h1:active,
+  main h1:hover, main h1:focus, main h1:active {
+    background-color: inherit !important;
+    color: inherit !important;
+    outline: inherit !important;
+    outline-offset: inherit !important;
+    border: inherit !important;
+    filter: none !important;
+    opacity: inherit !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  ul.blog-posts li:hover::before,
+  ul.blog-posts li:focus::before,
+  ul.blog-posts li:active::before {
+    opacity: 0.5 !important;
+  }
+
+  :focus-visible {
+    outline: 1px solid currentColor !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* =========================================================
+   Reduced motion
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   Accessibility
+   ========================================================= */
+:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   Infobox components (cohost style)
+   ========================================================= */
+div.infobox-frame {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(255 232 212);
+  border-radius: 0.5rem;
+  color: rgb(34 0 16);
+  padding: 0.75rem;
+  gap: 1rem;
+  align-items: center;
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+div.infobox-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0icmdiKDEzMSAzNyA3OSkiIGFyaWEtaGlkZGVuPSJ0cnVlIiBjbGFzcz0iaC02IHctNiBmbGV4LW5vbmUgdGV4dC1jaGVycnkiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTExLjI1IDExLjI1bC4wNDEtLjAyYS43NS43NSAwIDAxMS4wNjMuODUybC0uNzA4IDIuODM2YS43NS43NSAwIDAwMS4wNjMuODUzbC4wNDEtLjAyMU0yMSAxMmE5IDkgMCAxMS0xOCAwIDkgOSAwIDAxMTggMHptLTktMy43NWguMDA4di4wMDhIMTJWOC4yNXoiPjwvcGF0aD48L3N2Zz4K);
+}
+div.infobox-text > p { margin: 0; }
+
+div.warningbox-frame {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(250 216 214);
+  border-radius: 0.5rem;
+  color: rgb(34 0 16);
+  padding: 0.75rem;
+  gap: 1rem;
+  align-items: center;
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+div.warningbox-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0icmdiKDIyOSwgMTA3LCAxMTEpIiBhcmlhLWhpZGRlbj0idHJ1ZSIgY2xhc3M9InctNiBzZWxmLXN0YXJ0IHRleHQtc3RyYXdiZXJyeSI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTIgOXYzLjc1bS05LjMwMyAzLjM3NmMtLjg2NiAxLjUuMjE3IDMuMzc0IDEuOTQ4IDMuMzc0aDE0LjcxYzEuNzMgMCAyLjgxMy0xLjg3NCAxLjk0OC0zLjM3NEwxMy45NDkgMy4zNzhjLS44NjYtMS41LTMuMDMyLTEuNS0zLjg5OCAwTDIuNjk3IDE2LjEyNnpNMTIgMTUuNzVoLjAwN3YuMDA4SDEydi0uMDA4eiI+PC9wYXRoPjwvc3ZnPgo=);
+}
+div.warningbox-text > p { margin: 0; }
+
+div.successbox-frame {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(226 246 208);
+  border-radius: 0.5rem;
+  color: rgb(14 59 16);
+  padding: 0.75rem;
+  gap: 1rem;
+  align-items: center;
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+div.successbox-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0icmdiKDE0LCA1OSwgMTYpIiBhcmlhLWhpZGRlbj0idHJ1ZSIgY2xhc3M9InctNiBzZWxmLXN0YXJ0IHRleHQtZ3JlZW4tODAwIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik05IDEyLjc1TDExLjI1IDE1IDE1IDkuNzVNMjEgMTJhOSA5IDAgMTEtMTggMCA5IDkgMCAwMTE4IDB6Ij48L3BhdGg+PC9zdmc+Cg==);
+}
+div.successbox-text > p { margin: 0; }

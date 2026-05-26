@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+  <title>편안한 한국어 연습 - Korean Through Fiction</title>
+  <meta name="description" content="소설을 읽으면서 한국어를 배워요. Learn Korean Through Reading Fiction.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="flex">
+    <div class="title">
+      <h1><a href="index.html">편안한 한국어 연습 - Korean Through Fiction</a></h1>
+    </div>
+    <nav>
+      <p>
+        <a href="blog/index.html">이야기 목록</a>
+        <a href="https://www.youtube.com/@KoreanThroughFiction" target="_blank" rel="noopener">유튜브</a>
+        <a href="https://www.tiktok.com/@korean.through.fiction" target="_blank" rel="noopener">틱톡</a>
+        <a href="https://lazykoreanpractice.substack.com" target="_blank" rel="noopener">서브스택</a>
+        <a href="https://bearblog.dev/discover/" target="_blank" rel="noopener">발견하다</a>
+        <a href="micro/index.html">寸話</a>
+      </p>
+    </nav>
+  </header>
+
+  <main>
+    <div id="home-text">
+      <p>소설을 읽으면서 한국어를 배워요.<br>
+      [Learn Korean Through Reading Fiction.]</p>
+    </div>
+
+    <ul class="blog-posts" id="post-list">
+      <!-- Posts prepended here, newest first -->
+    </ul>
+
+    <button id="random-post-btn" class="random-button">랜덤 이야기</button>
+  </main>
+
+  <footer>
+    <a class="bmc-button" href="https://buymeacoffee.com/lazykoreanpratice" target="_blank" rel="noopener" aria-label="Buy me a coffee">
+      <span>buy me a coffee</span>
+    </a>
+    <span>Powered by <a href="https://bearblog.dev">Bear ʕ•ᴥ•ʔ</a></span>
+  </footer>
+
+  <script>
+  function randomPost() {
+    const blogPosts = document.querySelectorAll('.blog-posts li a');
+    if (blogPosts.length > 0) {
+      const randomIndex = Math.floor(Math.random() * blogPosts.length);
+      window.location.href = blogPosts[randomIndex].href;
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    const randomBtn = document.getElementById('random-post-btn');
+    if (randomBtn) randomBtn.addEventListener('click', randomPost);
+
+    const lists = document.querySelectorAll('ul.blog-posts');
+    lists.forEach(ul => {
+      const items = Array.from(ul.children);
+      if (items.length < 2) return;
+      ul.style.visibility = 'hidden';
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      items.forEach(li => ul.appendChild(li));
+      ul.style.visibility = '';
+    });
+  });
+  </script>
+
+</body>
+</html>
