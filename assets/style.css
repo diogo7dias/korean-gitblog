@@ -85,7 +85,6 @@ a:hover {
    Shared chip style family
    ========================================================= */
 .chip-button,
-.title a,
 footer .bmc-button,
 .random-button {
   background-color: #fff642;
@@ -108,7 +107,6 @@ footer .bmc-button,
 }
 
 .chip-button:hover,
-.title a:hover,
 nav a:hover,
 footer .bmc-button:hover,
 .random-button:hover {
