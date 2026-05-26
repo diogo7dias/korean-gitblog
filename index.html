@@ -9,6 +9,22 @@
 </head>
 <body>
 
+  <style>
+    /* Homepage-only tweaks: tighten header, eyebrow highlights, hide all but recent N posts. */
+    body > header.flex { gap: 0.5rem !important; }
+    .hl-yellow {
+      background-color: #fff642;
+      color: #000;
+      padding: 3px 6px;
+      display: inline-block;
+      outline: 1px solid black;
+      margin: 0.25rem 0;
+    }
+    .eyebrow { margin-top: 1rem; margin-bottom: 0.5rem; }
+    #post-list li.hidden-on-home { display: none !important; }
+    #random-post-btn { margin-top: 0.5rem; }
+  </style>
+
   <header class="flex">
     <div class="title">
       <h1><a href="index.html">편안한 한국어 연습 - Korean Through Fiction</a></h1>
@@ -26,10 +42,16 @@
   </header>
 
   <main>
+    <button id="random-post-btn" class="random-button">랜덤 이야기</button>
+
     <div id="home-text">
       <p>소설을 읽으면서 한국어를 배워요.<br>
       [Learn Korean Through Reading Fiction.]</p>
     </div>
+
+    <p><span id="last-post-elapsed" class="hl-yellow">마지막 스토리 올린 뒤 경과 시간: (—)</span></p>
+
+    <p class="eyebrow"><span class="hl-yellow">(<span id="recent-count">3</span>) 최근 게시물</span></p>
 
     <ul class="blog-posts" id="post-list">
       <li>
@@ -1105,8 +1127,6 @@
         <a href="posts/her-metamorphosis-in-purple.html">그녀의 보라색 변형 - Her Metamorphosis in Purple</a>
       </li>
     </ul>
-
-    <button id="random-post-btn" class="random-button">랜덤 이야기</button>
   </main>
 
   <footer>
@@ -1117,6 +1137,8 @@
   </footer>
 
   <script>
+  const RECENT_COUNT = 3;
+
   function randomPost() {
     const blogPosts = document.querySelectorAll('.blog-posts li a');
     if (blogPosts.length > 0) {
@@ -1124,22 +1146,44 @@
       window.location.href = blogPosts[randomIndex].href;
     }
   }
+
+  function formatElapsed(d) {
+    const now = new Date();
+    const ms = now - d;
+    const days = Math.floor(ms / 86400000);
+    if (days < 1) return '오늘';
+    if (days < 30) return days + '일';
+    const months = Math.floor(days / 30);
+    if (months < 12) return months + '개월';
+    const years = Math.floor(days / 365);
+    return years + '년';
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     const randomBtn = document.getElementById('random-post-btn');
     if (randomBtn) randomBtn.addEventListener('click', randomPost);
 
-    const lists = document.querySelectorAll('ul.blog-posts');
-    lists.forEach(ul => {
+    // Hide all but RECENT_COUNT newest entries (list is already sorted newest first)
+    const ul = document.getElementById('post-list');
+    if (ul) {
       const items = Array.from(ul.children);
-      if (items.length < 2) return;
-      ul.style.visibility = 'hidden';
-      for (let i = items.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [items[i], items[j]] = [items[j], items[i]];
+      items.forEach((li, i) => {
+        if (i >= RECENT_COUNT) li.classList.add('hidden-on-home');
+      });
+      const recountEl = document.getElementById('recent-count');
+      if (recountEl) recountEl.textContent = Math.min(RECENT_COUNT, items.length);
+
+      // Compute elapsed since newest post via its <time> in target post would require fetch;
+      // use the <span> date in first <li> instead.
+      const firstSpan = items[0] && items[0].querySelector('span');
+      if (firstSpan) {
+        const d = new Date(firstSpan.textContent);
+        if (!isNaN(d)) {
+          const el = document.getElementById('last-post-elapsed');
+          if (el) el.textContent = '마지막 스토리 올린 뒤 경과 시간: (' + formatElapsed(d) + ')';
+        }
       }
-      items.forEach(li => ul.appendChild(li));
-      ul.style.visibility = '';
-    });
+    }
   });
   </script>
 
