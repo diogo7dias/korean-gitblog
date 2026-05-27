@@ -12,15 +12,6 @@
   --hero-aspect: 4 / 3;
 }
 
-/* Light scheme preference swap */
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg-color: #222;
-    --text-color: #fff;
-    --color-primary: wheat;
-  }
-}
-
 /* =========================================================
    Resets and hardening
    ========================================================= */

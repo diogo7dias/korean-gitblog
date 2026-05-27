@@ -31,7 +31,7 @@ Static blog that replicates koreanfiction.bearblog.dev, hosted free on GitHub Pa
 The site uses a custom monospace theme. All design decisions are locked. Claude must preserve:
 
 - Font: Galmuri14, with Menlo / Consolas / monospace fallbacks (loaded from CDN)
-- Color scheme: white background `#ffffff`, black text `#111` by default; swaps to dark (`#222` bg, `#fff` text) for users who prefer light scheme (yes, this is intentional — the CSS media query is inverted on purpose)
+- Color scheme: white background `#ffffff`, black text `#111`. Single theme — no dark-mode variant, no prefers-color-scheme media query.
 - Max content width: 600px, centered
 - All interactive elements use `outline: 1px solid black` (solid at rest, dashed on hover)
 - Yellow chip color: `#fff642` for primary action buttons
