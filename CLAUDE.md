@@ -91,11 +91,7 @@ Create `posts/SLUG.html` using the template below. Fill in all placeholders.
     <nav>
       <p>
         <a href="../blog/index.html">이야기 목록</a>
-        <a href="https://www.youtube.com/@KoreanThroughFiction" target="_blank" rel="noopener">유튜브</a>
-        <a href="https://www.tiktok.com/@korean.through.fiction" target="_blank" rel="noopener">틱톡</a>
-        <a href="https://lazykoreanpractice.substack.com" target="_blank" rel="noopener">서브스택</a>
-        <a href="https://bearblog.dev/discover/" target="_blank" rel="noopener">발견하다</a>
-        <a href="../micro/index.html">寸話</a>
+        <button type="button" id="random-post-btn" class="random-button">랜덤 이야기</button>
       </p>
     </nav>
   </header>
@@ -119,11 +115,14 @@ Create `posts/SLUG.html` using the template below. Fill in all placeholders.
   </main>
 
   <footer>
+    <button type="button" class="random-button">랜덤 이야기</button>
     <a class="bmc-button" href="https://buymeacoffee.com/lazykoreanpratice" target="_blank" rel="noopener" aria-label="Buy me a coffee">
       <span>buy me a coffee</span>
     </a>
     <span>Powered by <a href="https://bearblog.dev">Bear ʕ•ᴥ•ʔ</a></span>
   </footer>
+
+  <script src="../assets/random.js" defer></script>
 
 </body>
 </html>

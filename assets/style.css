@@ -305,6 +305,12 @@ footer {
   margin-top: 2rem;
 }
 
+footer .random-button {
+  flex-basis: 100%;
+  justify-content: center;
+  margin: 0 auto 0.25rem auto;
+}
+
 footer .bmc-button {
   background-color: var(--text-color) !important;
   color: var(--bg-color) !important;

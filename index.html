@@ -22,8 +22,6 @@
     }
     .eyebrow { margin-top: 1rem; margin-bottom: 0.5rem; }
     #post-list li.hidden-on-home { display: none !important; }
-    /* Random button sits with nav buttons, no gap */
-    nav p #random-post-btn { font: inherit; line-height: 1.25; }
   </style>
 
   <header class="flex">
@@ -32,7 +30,8 @@
     </div>
     <nav>
       <p>
-        <a href="blog/index.html">이야기 목록</a>        <button id="random-post-btn" class="random-button">랜덤 이야기</button>
+        <a href="blog/index.html">이야기 목록</a>
+        <button type="button" id="random-post-btn" class="random-button">랜덤 이야기</button>
       </p>
     </nav>
   </header>
@@ -1124,20 +1123,16 @@
   </main>
 
   <footer>
+    <button type="button" class="random-button">랜덤 이야기</button>
     <a class="bmc-button" href="https://buymeacoffee.com/lazykoreanpratice" target="_blank" rel="noopener" aria-label="Buy me a coffee">
       <span>buy me a coffee</span>
-    </a>  </footer>
+    </a>
+  </footer>
+
+  <script src="assets/random.js" defer></script>
 
   <script>
   const RECENT_COUNT = 3;
-
-  function randomPost() {
-    const blogPosts = document.querySelectorAll('.blog-posts li a');
-    if (blogPosts.length > 0) {
-      const randomIndex = Math.floor(Math.random() * blogPosts.length);
-      window.location.href = blogPosts[randomIndex].href;
-    }
-  }
 
   function formatElapsed(d) {
     const now = new Date();
@@ -1152,9 +1147,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    const randomBtn = document.getElementById('random-post-btn');
-    if (randomBtn) randomBtn.addEventListener('click', randomPost);
-
     // Hide all but RECENT_COUNT newest entries (list is already sorted newest first)
     const ul = document.getElementById('post-list');
     if (ul) {
