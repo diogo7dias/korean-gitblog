@@ -297,6 +297,46 @@ nav a:hover {
 }
 
 /* =========================================================
+   Gallery grid (Hanja Library)
+   ========================================================= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 0.5rem;
+}
+
+.gallery-tile {
+  display: block;
+  outline: 1px solid black;
+  outline-offset: 0;
+  overflow: hidden;
+  line-height: 0;
+  transition: outline-style 0.1s ease, filter 0.1s ease;
+}
+
+.gallery-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+}
+
+.gallery-tile:hover {
+  outline: 1px dashed black;
+  outline-offset: 0;
+  filter: saturate(1.05);
+}
+
+@media screen and (max-width: 700px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+/* =========================================================
    Meta and misc
    ========================================================= */
 time { opacity: 0.2; font-weight: bold; font-size: 100%; display: none; }
