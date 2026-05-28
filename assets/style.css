@@ -358,6 +358,12 @@ nav a {
    ========================================================= */
 main, article, .content, .post { display: flow-root; }
 
+.content > p:first-of-type,
+.content > h1:first-of-type,
+.content > h2:first-of-type {
+  margin-top: 0;
+}
+
 @media screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
   main .content img:first-of-type,
   main article img:first-of-type,
