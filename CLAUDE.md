@@ -116,8 +116,8 @@ Create `posts/SLUG.html` using the template below. Fill in all placeholders.
 
   <footer>
     <button type="button" class="random-button">랜덤 이야기</button>
-    <a class="bmc-button" href="https://buymeacoffee.com/lazykoreanpratice" target="_blank" rel="noopener" aria-label="Buy me a coffee">
-      <span>buy me a coffee</span>
+    <a class="bmc-button" href="https://ko-fi.com/d7d7m" target="_blank" rel="noopener" aria-label="Buy me a ko-fi">
+      <span>buy me a ko-fi</span>
     </a>
     <span>Powered by <a href="https://bearblog.dev">Bear ʕ•ᴥ•ʔ</a></span>
   </footer>
@@ -271,8 +271,8 @@ Use this structure (fill in existing posts from bearblog CSV export if migrating
   </main>
 
   <footer>
-    <a class="bmc-button" href="https://buymeacoffee.com/lazykoreanpratice" target="_blank" rel="noopener" aria-label="Buy me a coffee">
-      <span>buy me a coffee</span>
+    <a class="bmc-button" href="https://ko-fi.com/d7d7m" target="_blank" rel="noopener" aria-label="Buy me a ko-fi">
+      <span>buy me a ko-fi</span>
     </a>
     <span>Powered by <a href="https://bearblog.dev">Bear ʕ•ᴥ•ʔ</a></span>
   </footer>

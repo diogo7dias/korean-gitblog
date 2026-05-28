@@ -296,10 +296,16 @@ footer {
   margin-top: 2rem;
 }
 
-footer .random-button {
+footer .random-button,
+footer .bmc-button {
   flex-basis: 100%;
   justify-content: center;
+  text-align: center;
   margin: 0 auto 0.25rem auto;
+  padding: 3px 9px !important;
+  line-height: 1.25 !important;
+  display: inline-flex;
+  align-items: center;
 }
 
 footer .bmc-button {
