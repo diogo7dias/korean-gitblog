@@ -15,8 +15,8 @@
         '<p class="lightbox-hint">swipe left or right to move through the photos</p>' +
         '<img alt="">' +
         '<div class="lightbox-controls">' +
-          '<button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous">&larr;</button>' +
-          '<button type="button" class="lightbox-btn lightbox-next" aria-label="Next">&rarr;</button>' +
+          '<button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous">이전</button>' +
+          '<button type="button" class="lightbox-btn lightbox-next" aria-label="Next">다음</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(overlay);
