@@ -47,9 +47,65 @@
 
   window.randomPost = randomPost;
 
+  // -----------------------------------------------------------
+  // Search: live inline filter on /blog/ + /micro/,
+  //         debounced redirect to /blog/?q= from other pages.
+  // -----------------------------------------------------------
+  function isListPage() {
+    return /\/(blog|micro)\/(?:index\.html)?$/.test(location.pathname);
+  }
+
+  function blogBaseRedirect() {
+    var p = location.pathname;
+    if (p.indexOf('/posts/') !== -1) return '../blog/index.html';
+    if (/\/micro\//.test(p)) return '../blog/index.html';
+    return 'blog/index.html';
+  }
+
+  function applyFilter(q) {
+    q = (q || '').toLowerCase().trim();
+    var items = document.querySelectorAll('ul.blog-posts > li');
+    items.forEach(function (li) {
+      var t = li.textContent.toLowerCase();
+      li.style.display = (!q || t.indexOf(q) !== -1) ? '' : 'none';
+    });
+  }
+
+  function initSearch() {
+    var inp = document.getElementById('search-input');
+    if (!inp) return;
+
+    var params = new URLSearchParams(location.search);
+    var initial = params.get('q') || '';
+    if (initial) inp.value = initial;
+
+    if (isListPage()) {
+      if (initial) applyFilter(initial);
+      inp.addEventListener('input', function () {
+        applyFilter(inp.value);
+      });
+      return;
+    }
+
+    var t;
+    function go() {
+      var q = inp.value.trim();
+      if (!q) return;
+      window.location.href = blogBaseRedirect() + '?q=' + encodeURIComponent(q);
+    }
+    inp.addEventListener('input', function () {
+      clearTimeout(t);
+      t = setTimeout(go, 400);
+    });
+    inp.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { clearTimeout(t); go(); }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.random-button').forEach(function (b) {
       b.addEventListener('click', randomPost);
     });
+    initSearch();
   });
 })();
