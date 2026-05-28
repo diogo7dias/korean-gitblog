@@ -381,6 +381,7 @@ main .gallery-grid .gallery-tile img {
 .lightbox img {
   max-width: 92vw;
   max-height: 70vh;
+  min-height: 200px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -394,6 +395,11 @@ main .gallery-grid .gallery-tile img {
   display: flex;
   gap: 12px;
   justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  margin: 0 auto;
 }
 
 .lightbox-btn {

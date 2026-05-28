@@ -6,6 +6,10 @@
     var urls = tiles.map(function (a) { return a.getAttribute('href'); });
     var idx = 0;
 
+    // Preload so src swaps are instant and the image element does not
+    // briefly collapse while loading (which would shift the controls).
+    urls.forEach(function (u) { var i = new Image(); i.src = u; });
+
     var overlay = document.createElement('div');
     overlay.className = 'lightbox';
     overlay.innerHTML =
