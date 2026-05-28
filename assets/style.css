@@ -466,7 +466,8 @@ footer img {
     font-size: 0.8rem !important;
   }
 
-  .random-button {
+  .random-button,
+  .search-input {
     font-size: 0.9rem !important;
     line-height: 1.4 !important;
   }
@@ -521,10 +522,14 @@ footer img {
   .chip-button,
   .title a,
   footer .bmc-button,
-  .random-button {
+  .random-button,
+  .search-input {
     outline: 1px solid black !important;
     outline-offset: 0 !important;
     border: none !important;
+    border-radius: 0 !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
   }
 
   nav a {
