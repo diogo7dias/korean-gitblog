@@ -353,9 +353,27 @@ nav a:hover {
 
 .lightbox.open { display: flex; }
 
+.lightbox-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 96vw;
+  max-height: 92vh;
+}
+
+.lightbox-hint {
+  color: #fff;
+  opacity: 0.7;
+  font: inherit;
+  font-size: 0.8rem;
+  margin: 0;
+  text-align: center;
+}
+
 .lightbox img {
   max-width: 92vw;
-  max-height: 88vh;
+  max-height: 70vh;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -365,17 +383,22 @@ nav a:hover {
   display: block;
 }
 
+.lightbox-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
 .lightbox-btn {
-  position: absolute;
   background: transparent;
   color: #fff;
   border: 0;
   outline: 1px solid #fff;
   outline-offset: 0;
   font: inherit;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1;
-  padding: 8px 14px;
+  padding: 6px 16px;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -385,9 +408,14 @@ nav a:hover {
 
 .lightbox-btn:hover { outline-style: dashed; }
 
-.lightbox-prev { left: 16px; top: 50%; transform: translateY(-50%); }
-.lightbox-next { right: 16px; top: 50%; transform: translateY(-50%); }
-.lightbox-close { right: 16px; top: 16px; padding: 4px 10px; font-size: 1rem; }
+.lightbox-close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  padding: 4px 10px;
+  font-size: 1rem;
+}
+
 .lightbox-count {
   position: absolute;
   left: 16px;
@@ -399,8 +427,9 @@ nav a:hover {
 }
 
 @media screen and (max-width: 700px) {
-  .lightbox-prev, .lightbox-next { font-size: 1.2rem; padding: 6px 10px; }
-  .lightbox img { max-width: 96vw; max-height: 82vh; }
+  .lightbox img { max-width: 96vw; max-height: 65vh; }
+  .lightbox-btn { font-size: 1.05rem; padding: 5px 14px; }
+  .lightbox-hint { font-size: 0.75rem; }
 }
 
 /* =========================================================

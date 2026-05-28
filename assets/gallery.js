@@ -11,9 +11,14 @@
     overlay.innerHTML =
       '<button type="button" class="lightbox-btn lightbox-close" aria-label="Close">x</button>' +
       '<span class="lightbox-count"></span>' +
-      '<button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous">&larr;</button>' +
-      '<img alt="">' +
-      '<button type="button" class="lightbox-btn lightbox-next" aria-label="Next">&rarr;</button>';
+      '<div class="lightbox-stack">' +
+        '<p class="lightbox-hint">swipe left or right to move through the photos</p>' +
+        '<img alt="">' +
+        '<div class="lightbox-controls">' +
+          '<button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous">&larr;</button>' +
+          '<button type="button" class="lightbox-btn lightbox-next" aria-label="Next">&rarr;</button>' +
+        '</div>' +
+      '</div>';
     document.body.appendChild(overlay);
 
     var img = overlay.querySelector('img');
