@@ -842,14 +842,10 @@ p.patreon-note {
   line-height: 1.2;
   /* Pull the note down so it sits directly on top of the title block,
      cancelling header.flex's own 1rem of top padding. */
-  margin: 0.4rem 0 -1rem 0;
+  /* Sit low, right on top of the title bar, without shifting the
+     title itself up from where it has always been. */
+  margin: 1.25rem 0 -2.25rem 0;
   text-align: left;
-}
-
-/* The note replaces the whitespace the title block normally reserves,
-   so it rests directly on the black title bar. */
-p.patreon-note + header.flex .title h1 {
-  margin-top: 0;
 }
 
 a.patreon-link {
