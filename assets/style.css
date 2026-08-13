@@ -833,3 +833,26 @@ div.successbox-icon {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0icmdiKDE0LCA1OSwgMTYpIiBhcmlhLWhpZGRlbj0idHJ1ZSIgY2xhc3M9InctNiBzZWxmLXN0YXJ0IHRleHQtZ3JlZW4tODAwIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik05IDEyLjc1TDExLjI1IDE1IDE1IDkuNzVNMjEgMTJhOSA5IDAgMTEtMTggMCA5IDkgMCAwMTE4IDB6Ij48L3BhdGg+PC9zdmc+Cg==);
 }
 div.successbox-text > p { margin: 0; }
+
+/* =========================================================
+   Patreon note above the site title
+   ========================================================= */
+p.patreon-note {
+  font-size: 0.5rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+a.patreon-link {
+  background: #111;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0 0.25em;
+  text-decoration: none;
+}
+
+a.patreon-link:hover {
+  background: #ffffff;
+  color: #111;
+  outline: 1px dashed #111;
+}
