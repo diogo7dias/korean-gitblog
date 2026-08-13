@@ -839,25 +839,30 @@ div.successbox-text > p { margin: 0; }
    ========================================================= */
 p.patreon-note {
   font-size: 0.75rem;
-  line-height: 1.2;
+  line-height: 1.8;
   /* Pull the note down so it sits directly on top of the title block,
      cancelling header.flex's own 1rem of top padding. */
   /* Sit low, right on top of the title bar, without shifting the
      title itself up from where it has always been. */
-  margin: 0.6rem 0 -1.75rem 0;
+  margin: 0.6rem 0 -0.75rem 0;
   text-align: left;
 }
 
 a.patreon-link {
-  background: #111;
-  color: #ffffff;
+  background-color: #000000;
+  color: var(--bg-color);
   font-weight: bold;
-  padding: 0 0.25em;
+  padding: 3px 9px;
   text-decoration: none;
+  transition: all 0.1s ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  outline: 1px solid black !important;
+  outline-offset: 0px !important;
 }
 
 a.patreon-link:hover {
-  background: #ffffff;
-  color: #111;
-  outline: 1px dashed #111;
+  background-color: #fff;
+  color: #000;
+  outline: 1px dashed black !important;
 }
