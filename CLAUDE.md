@@ -49,6 +49,17 @@ The full CSS lives in `assets/style.css`. Do not regenerate it. Only edit it if 
 
 ---
 
+## Post list behaviour
+
+Both `index.html` and `blog/index.html` store the same list, newest first, in the HTML source. What the reader sees differs:
+
+- **Homepage** shows only the newest 3 entries. The inline script at the bottom of `index.html` (`RECENT_COUNT = 3`) adds `hidden-on-home` to the rest.
+- **`/blog/` (이야기 목록)** shows every story in a fresh random order on each load. `shuffleBlogList()` in `assets/random.js` reorders the `<li>` elements after `DOMContentLoaded`. Reloading the page, or clicking 이야기 목록 again, produces a new order.
+
+Keep the HTML source newest-first in both files. The homepage cutoff and the elapsed-time counter both depend on the first `<li>` being the newest post.
+
+---
+
 ## Adding a new post
 
 When the user says "add a post" or "create a post", they will provide:

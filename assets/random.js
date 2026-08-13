@@ -48,6 +48,28 @@
   window.randomPost = randomPost;
 
   // -----------------------------------------------------------
+  // Shuffle: /blog/ shows every story in a fresh random order on
+  // each load, so the list is a lucky dip instead of a timeline.
+  // The HTML stays newest-first; only the rendered order changes.
+  // -----------------------------------------------------------
+  function shuffleBlogList() {
+    if (!/\/blog\/(?:index\.html)?$/.test(location.pathname)) return;
+    var ul = document.querySelector('ul.blog-posts');
+    if (!ul) return;
+    var items = Array.prototype.slice.call(ul.children);
+    if (items.length < 2) return;
+    for (var i = items.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = items[i];
+      items[i] = items[j];
+      items[j] = tmp;
+    }
+    var frag = document.createDocumentFragment();
+    items.forEach(function (li) { frag.appendChild(li); });
+    ul.appendChild(frag);
+  }
+
+  // -----------------------------------------------------------
   // Search: live inline filter on /blog/ + /micro/,
   //         debounced redirect to /blog/?q= from other pages.
   // -----------------------------------------------------------
@@ -106,6 +128,7 @@
     document.querySelectorAll('.random-button').forEach(function (b) {
       b.addEventListener('click', randomPost);
     });
+    shuffleBlogList();
     initSearch();
   });
 })();
