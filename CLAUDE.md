@@ -142,9 +142,11 @@ Create `posts/SLUG.html` using the template below. Fill in all placeholders.
   <a href="../blog/index.html?q=TAG_URLENCODED">#TAG_DISPLAY</a>
   ```
 
-**Step 3 — Update the homepage post list**
+**Step 3 — Update BOTH post lists**
 
-Open `index.html`. Find the `<ul class="blog-posts">` list. Prepend a new `<li>` at the top:
+There are two post lists and they must stay in sync: `index.html` (homepage) and `blog/index.html` (이야기 목록). In each, find `<ul class="blog-posts" id="post-list">` and prepend a new `<li>` at the top.
+
+In `index.html` the href is relative to the site root:
 
 ```html
 <li>
@@ -153,15 +155,44 @@ Open `index.html`. Find the `<ul class="blog-posts">` list. Prepend a new `<li>`
 </li>
 ```
 
+In `blog/index.html` the same entry needs the `../` prefix:
+
+```html
+<li>
+  <span>DD Mon, YYYY</span>
+  <a href="../posts/SLUG.html">POST_TITLE</a>
+</li>
+```
+
 **Step 4 — Commit and push**
 
 ```bash
-git add posts/SLUG.html assets/images/SLUG.webp index.html
+git add posts/SLUG.html assets/images/SLUG.webp index.html blog/index.html
 git commit -m "post: SLUG"
 git push
 ```
 
 GitHub Actions will deploy automatically. Site live in ~30 seconds.
+
+---
+
+## Importing a post from Substack
+
+When the user gives only a Substack URL (for example `https://lazykoreanpractice.substack.com/p/snow-on-his-shoulders`), pull everything from the JSON API instead of scraping the rendered page:
+
+```bash
+curl -sL -A "Mozilla/5.0" "https://lazykoreanpractice.substack.com/api/v1/posts/SLUG" -o /tmp/sub.json
+```
+
+That response contains `title` (already in the bilingual `한국어 - English [level]` format), `post_date`, `slug`, `cover_image`, and the full `body_html`.
+
+- Use the Substack `slug` as the site slug, and the Substack `title` verbatim, including the level tag.
+- Hero image: download the underlying `substack-post-media.s3.amazonaws.com` URL embedded in `cover_image`, resize the long side to 1200 px, and save as `assets/images/SLUG.webp` at WebP quality 70.
+- Body: strip the leading `captioned-image-container` figure (that duplicate hero is already the post image), then take the `<p>` text in order. Stop at the paragraph containing `Subscribe now`; everything after it is Patreon and subscription promotion that must not be copied to the site.
+- Check `audience` in the JSON. If it is not `everyone`, the post is paywalled and `body_html` holds only a preview; ask the user to paste the full text.
+- Tags: use the standard default set unless the user says otherwise.
+
+Then continue with Step 3 and Step 4 above.
 
 ---
 
