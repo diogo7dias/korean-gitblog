@@ -838,13 +838,13 @@ div.successbox-text > p { margin: 0; }
    Patreon note above the site title
    ========================================================= */
 p.patreon-note {
-  font-size: 1rem;
+  font-size: 0.75rem;
   line-height: 1.2;
   /* Pull the note down so it sits directly on top of the title block,
      cancelling header.flex's own 1rem of top padding. */
   /* Sit low, right on top of the title bar, without shifting the
      title itself up from where it has always been. */
-  margin: 0.8rem 0 -2.25rem 0;
+  margin: 1.1rem 0 -2.25rem 0;
   text-align: left;
 }
 
