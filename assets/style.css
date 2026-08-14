@@ -742,6 +742,51 @@ footer img {
 }
 
 /* =========================================================
+   Phone nav: one row
+   Sits after the max-width: 1024px block on purpose, because that block
+   sets .random-button / .search-input font-size with !important and would
+   otherwise win. The two links and the random button hold their size; the
+   search box is the only flexible item, so it gives up the leftover width.
+   ========================================================= */
+@media screen and (max-width: 700px) {
+  /* header is a column flex with align-items: flex-start, so nav sizes to
+     its content by default and a nowrap row would overflow the screen. */
+  nav {
+    align-self: stretch;
+    min-width: 0;
+  }
+
+  nav p {
+    flex-wrap: nowrap;
+    column-gap: 6px;
+    min-width: 0;
+  }
+
+  nav a,
+  .random-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 3px 5px;
+    font-size: 0.7rem !important;
+  }
+
+  .search-input {
+    flex: 1 1 0;
+    min-width: 60px;
+    padding: 3px 5px;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Very narrow phones cannot hold four controls plus a usable search box,
+   so let the row wrap again instead of squeezing the search to nothing. */
+@media screen and (max-width: 374px) {
+  nav p {
+    flex-wrap: wrap;
+  }
+}
+
+/* =========================================================
    Reduced motion
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
