@@ -4,4 +4,4 @@ Static blog about learning Korean through fiction. Plain HTML, no build step, de
 
 **Live site: https://diogo7dias.github.io/korean-gitblog/**
 
-See [CLAUDE.md](CLAUDE.md) for repository structure and post conventions.
+See [AGENTS.md](AGENTS.md) for repository structure and post conventions.
