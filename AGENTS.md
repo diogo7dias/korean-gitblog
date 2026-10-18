@@ -455,3 +455,7 @@ Body:
 Create the post file, process the image, update index.html, commit and push.
 ```
 
+
+## File size limit
+
+- Keep every agent-authored file under 5,000 tokens (bytes / 4, about 20 KB). `.githooks/check-token-limit` blocks staged files over the limit (enable once per clone with `bin/install-git-hooks`); split oversized files by responsibility instead of using `--no-verify`, and list genuinely non-agent files in `.token-limit-ignore`.
