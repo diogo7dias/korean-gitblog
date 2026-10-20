@@ -1,0 +1,3 @@
+# Imported stories (one file per post) and verbatim bearblog CSS
+posts/*.html
+assets/style.css
