@@ -1,5 +1,14 @@
 # Korean Through Fiction — GitHub Pages Blog
 
+## Project memory (Notion)
+
+- This repo's Notion project page: https://app.notion.com/p/404918442ce58176bf1dd9939617fbe6
+- Before starting work, read it: what it is, status, key decisions and the latest Work log entries.
+- After finishing, add a dated entry (YYYY-MM-DD, Europe/Lisbon) to its Work log, and update Status or Key decisions if they changed.
+- Never put secrets, credentials or conversation transcripts in Notion.
+- Notion is the shared memory across agents. See the Agent Operating Guide: https://app.notion.com/p/3fe918442ce58134b30fce2438660a20
+- Hindsight is being retired. Do not write new memories there.
+
 ## Project overview
 
 Static blog that replicates koreanfiction.bearblog.dev, hosted free on GitHub Pages. Posts are plain HTML files. No static site generator, no build step. Just HTML files committed to the repo, deployed automatically via GitHub Actions.
@@ -455,9 +464,12 @@ Body:
 Create the post file, process the image, update index.html, commit and push.
 ```
 
-
 ## UI lint
 
 - Run lintapple before calling UI work done.
 - Serve and lint: `python3 -m http.server 8000` in the repo root, then `npx -y lintapple http://localhost:8000/`.
 - Policy: `ui-policy.json` holds it once created; until then lintapple uses its defaults. Never publish it (`deploy.yml` uploads the whole root).
+
+## File size limit
+
+- Keep every agent-authored file under 5,000 tokens (bytes / 4, about 20 KB). `.githooks/check-token-limit` blocks staged files over the limit (enable once per clone with `bin/install-git-hooks`); split oversized files by responsibility instead of using `--no-verify`, and list genuinely non-agent files in `.token-limit-ignore`.
